@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import { COLORS } from '../../../styles/theme'
 import XIcon from '../../../assets/icon/x-icon.svg'
 import PropTypes from 'prop-types'
+import { giftInfo } from '../../../assets/giftInfo'
 
-const GiftModal = ({ setGiftModal }) => {
+const GiftModal = ({ setGiftModal, level }) => {
+    const gifts = giftInfo[level]
     return (
         <Container>
             <Modal>
@@ -15,9 +17,13 @@ const GiftModal = ({ setGiftModal }) => {
                     추천하는 선물
                 </Title>
                 <GiftBox>
-                    <Gift src="" />
-                    <Gift src="" />
-                    <Gift src="" />
+                    {gifts.map((gift, index) => (
+                        <Gift
+                            key={index}
+                            src={gift.src}
+                            onClick={() => window.open(gift.url)}
+                        />
+                    ))}
                 </GiftBox>
             </Modal>
         </Container>
@@ -26,6 +32,7 @@ const GiftModal = ({ setGiftModal }) => {
 
 GiftModal.propTypes = {
     setGiftModal: PropTypes.func,
+    level: PropTypes.string.isRequired,
 }
 
 export default GiftModal

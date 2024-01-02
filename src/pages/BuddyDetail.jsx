@@ -20,7 +20,7 @@ const Container = styled.div`
     padding-top: 40px;
     background-color: ${COLORS.black};
     width: 100%;
-    height: 100vh;
+    height: 100%;
     align-items: center;
     display: flex;
     flex-direction: column;

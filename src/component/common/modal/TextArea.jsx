@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../../styles/theme'
+import PropTypes from 'prop-types'
 
-const TextArea = placeholder => {
+const TextArea = ({ type, placeholder }) => {
     const [textValue, setTextValue] = useState('')
 
     const handleSetValue = e => {
@@ -10,7 +11,8 @@ const TextArea = placeholder => {
     }
     return (
         <Container
-            placeholder={placeholder.placeholder}
+            type={type}
+            placeholder={placeholder}
             value={textValue}
             onChange={e => handleSetValue(e)}
             maxLength={60}
@@ -20,9 +22,14 @@ const TextArea = placeholder => {
 
 export default TextArea
 
+TextArea.propTypes = {
+    type: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+}
+
 const Container = styled.textarea`
     width: auto;
-    height: 140px;
+    height: ${props => (props.type === '생일' ? '60px' : '140px')};
     border: none;
     margin-top: 10px;
     background-color: ${COLORS.white};
