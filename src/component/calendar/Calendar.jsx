@@ -1,17 +1,29 @@
 import { styled } from 'styled-components'
 import { COLORS } from '../../styles/theme'
+import { useState } from 'react'
+import PropTypes from 'prop-types'
+import { BottomSheet } from 'react-spring-bottom-sheet'
+import '../../styles/BottomSheet.css'
+import AddCalendar from './AddCalendar'
 
-const CalendatList = data => {
+const CalendatList = ({ list }) => {
+    const [add, setAdd] = useState(false)
     return (
         <Container>
-            {data.list.map((item, index) => {
+            {list.map((item, index) => {
                 return <List key={index} />
             })}
             <AddButton>
-                <div>+ 일정 추가</div>
+                <div onClick={() => setAdd(true)}>+ 일정 추가</div>
             </AddButton>
+            <BottomSheet open={add} onDismiss={() => setAdd(false)}>
+                <AddCalendar />
+            </BottomSheet>
         </Container>
     )
+}
+CalendatList.propTypes = {
+    list: PropTypes.array,
 }
 
 export default CalendatList
