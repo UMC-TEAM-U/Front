@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
-import Button from './component/common/Button'
+import Home from './pages/Home'
+
 
 function App() {
     return (
@@ -10,10 +11,8 @@ function App() {
             <GlobalStyles />
             <Container>
                 <Header />
-                <div style={{ position: 'relative', top: '200px' }}>
-                    <Button text="생일" color="gray" />
-                    <Button text="경조사" />
-                </div>
+                <Home />
+
                 <NavBar />
             </Container>
         </>
