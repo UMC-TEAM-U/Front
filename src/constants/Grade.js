@@ -5,7 +5,7 @@ const GradeData = [
     },
     {
         id: 2,
-        name: '눈덩이',
+        name: '눈송이',
     },
     {
         id: 3,

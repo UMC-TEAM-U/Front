@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
-import Gift from './pages/gift/Gift'
-import GiftDetail from './pages/gift/GiftDetail'
-import ProfileSetting from './pages/ProfileSetting'
+import BuddyDetail from './pages/BuddyDetail'
+import Home from './pages/Home'
+
 
 function App() {
     return (
@@ -12,9 +12,7 @@ function App() {
             <GlobalStyles />
             <Container>
                 <Header />
-                {/* <GiftDetail /> */}
-                {/* <Gift /> */}
-                <ProfileSetting />
+                <BuddyDetail />
                 <NavBar />
             </Container>
         </>

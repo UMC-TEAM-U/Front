@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
-import { ReactComponent as GradeChangeIcon } from '../../assets/icon/grade-change.svg'
-import { ReactComponent as GiftIcon } from '../../assets/icon/gift.svg'
+import GradeChangeIcon from '../../assets/icon/grade-change.svg'
+import GiftIcon from '../../assets/icon/gift.svg'
+import { useState } from 'react'
+import LevelModal from '../common/modal/LevelModal'
+import GiftModal from '../common/modal/GiftModal'
 
 const UserBanner = () => {
+    const [levelModal, setLevelModal] = useState(false)
+    const [giftModal, setGiftModal] = useState(false)
     return (
         <Container>
             <IconBox />
@@ -13,13 +18,15 @@ const UserBanner = () => {
                     <span style={{ fontWeight: '700' }}>눈송이</span>
                 </Title>
                 <Actions>
-                    <div>
-                        등급 변경 <GradeChangeIcon />
-                    </div>
-                    <div>
-                        추천 선물 <GiftIcon />
-                    </div>
+                    <Button onClick={() => setLevelModal(true)}>
+                        등급 변경 <img src={GradeChangeIcon} />
+                    </Button>
+                    <Button onClick={() => setGiftModal(true)}>
+                        추천 선물 <img src={GiftIcon} />
+                    </Button>
                 </Actions>
+                {levelModal && <LevelModal setLevelModal={setLevelModal} />}
+                {giftModal && <GiftModal setGiftModal={setGiftModal} />}
             </Content>
         </Container>
     )
@@ -59,8 +66,22 @@ const Actions = styled.div`
     font-size: 14px;
     display: flex;
     gap: 22px;
-    > div {
-        display: flex;
-        gap: 6px;
+`
+
+const Button = styled.button`
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: ${COLORS.darkgray};
+    color: ${COLORS.gray};
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        color: ${COLORS.lightgray};
+
+        img {
+            filter: brightness(1.4);
+        }
     }
 `
