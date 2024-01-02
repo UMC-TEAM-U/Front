@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 
-function Button({ text, color }) {
+function Button({ text, color, className }) {
     return (
-        <ButtonStyle color={color}>
+        <ButtonStyle color={color} className={className}>
             <span>{text}</span>
         </ButtonStyle>
     )
@@ -14,6 +14,7 @@ function Button({ text, color }) {
 Button.propTypes = {
     text: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
 }
 
 export default Button
@@ -35,5 +36,6 @@ const ButtonStyle = styled.button`
         font-weight: 700;
         line-height: normal;
         padding: 22px 8px;
+        text-align: center;
     }
 `
