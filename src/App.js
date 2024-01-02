@@ -1,25 +1,23 @@
 import styled from 'styled-components'
-// import NavBar from './component/common/NavBar'
+import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
-
-// import Header from './component/common/Header'
-// import Home from './pages/Home'
-import Login from './pages/Login'
-
+import Header from './component/common/Header'
+import Gift from './pages/gift/Gift'
+import GiftDetail from './pages/gift/GiftDetail'
+// import ProfileSetting from './pages/ProfileSetting'
+import Signup from './pages/Signup'
 
 function App() {
     return (
         <>
             <GlobalStyles />
-
-
             <Container>
-                {/* <Header /> */}
-                <Login />
-                {/* <Home /> */}
-
-                {/* <NavBar /> */}
-
+                <Signup />
+                {/* <Header />
+                <GiftDetail />
+                <Gift />
+                <ProfileSetting />
+                <NavBar /> */}
             </Container>
         </>
     )
