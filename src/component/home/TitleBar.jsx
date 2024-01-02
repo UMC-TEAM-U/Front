@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
+import BarImage from '../../assets/img/BarImage.png'
 
 function TitleBar(data) {
     const title = data.text?.split('<br />')
@@ -26,6 +27,11 @@ const Container = styled.div`
 
     padding-top: 22px;
     padding-left: 26px;
+
+    background-image: url(${BarImage});
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 100% 100%;
 `
 
 const Title = styled.h1`
