@@ -17,7 +17,7 @@ function NavBar() {
                     <img src={HomeIcon} />
                     <span>버디리스트</span>
                 </IconBox>
-                <IconBox onClick={() => navigate('/Calendar')}>
+                <IconBox onClick={() => navigate('/calendar')}>
                     <img src={CalendarIcon} />
                     <span>캘린더</span>
                 </IconBox>

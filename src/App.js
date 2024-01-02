@@ -20,7 +20,7 @@ import Home from './pages/Home'
 import ProfileSetting from './pages/ProfileSetting'
 import Setting from './pages/Setting'
 import Signup from './pages/Signup'
-
+import CalendarPage from './pages/Calendar'
 
 function MainApp() {
     const location = useLocation()
@@ -38,6 +38,7 @@ function MainApp() {
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/buddy-detail" element={<BuddyDetail />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/calendar" element={<CalendarPage />} />
                 <Route path="*" element={<Navigate to="/home" />} />
             </Routes>
             {!hideForPage.includes(location.pathname) && <NavBar />}
@@ -52,7 +53,6 @@ function App() {
 
             <MainApp />
         </Router>
-
     )
 }
 

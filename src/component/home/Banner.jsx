@@ -25,7 +25,7 @@ const Banner = ({ userData }) => {
 
 Banner.propTypes = {
     userData: PropTypes.shape({
-        level: PropTypes.number.isRequired,
+        level: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
         name: PropTypes.string.isRequired,
     }),
 }
