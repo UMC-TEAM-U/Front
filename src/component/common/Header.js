@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import AddIcon from '../../assets/icon/add-icon.svg'
 import BuddyAddModal from './modal/BuddyAddModal'
+import { ReactComponent as Logo } from '../../assets/icon/Logo.svg'
 
 function Header() {
     const [modal, setModal] = useState(false)
@@ -34,11 +35,11 @@ const Container = styled.div`
     padding: 0px 20px;
 `
 
-const Logo = styled.div`
-    width: 24px;
-    height: 24px;
-    background-color: white;
-`
+// const Logo = styled.div`
+//     width: 24px;
+//     height: 24px;
+//     background-color: white;
+// `
 
 const BtnContainer = styled.button`
     display: flex;
