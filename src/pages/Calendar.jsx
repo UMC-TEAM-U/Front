@@ -6,9 +6,13 @@ import '../styles/Calendar.css'
 import moment from 'moment'
 import { ReactComponent as PrevIcon } from '../assets/icon/calendar-prev.svg'
 import { ReactComponent as NextIcon } from '../assets/icon/calendar-next.svg'
+import { BottomSheet } from 'react-spring-bottom-sheet'
+import '../styles/BottomSheet.css'
+import CalendatList from '../component/calendar/Calendar'
 
 const CalendarPage = () => {
     const [value, onChange] = useState(new Date())
+    const [open, setOpen] = useState(false)
     return (
         <Container>
             <Calendar
@@ -20,7 +24,12 @@ const CalendarPage = () => {
                 prevLabel={<PrevIcon />}
                 onChange={onChange}
                 value={value}
+                onClickDay={() => setOpen(true)}
             />
+            <div onClick={() => setOpen(true)}>Open</div>
+            <BottomSheet open={open} onDismiss={() => setOpen(false)}>
+                <CalendatList list={dummy} />
+            </BottomSheet>
         </Container>
     )
 }
@@ -43,3 +52,24 @@ const Container = styled.div`
         display: none;
     }
 `
+
+const dummy = [
+    {
+        id: 1,
+        name: '바나나먹는곰돌이',
+        date: '2021-08-01',
+        time: '10:00',
+    },
+    {
+        id: 2,
+        name: '바나나먹는곰돌이',
+        date: '2021-08-01',
+        time: '10:00',
+    },
+    {
+        id: 3,
+        name: '바나나먹는곰돌이',
+        date: '2021-08-01',
+        time: '10:00',
+    },
+]
