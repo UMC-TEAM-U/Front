@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import AddIcon from '../../assets/icon/add-icon.svg'
+import BuddyAddModal from './modal/BuddyAddModal'
 
 function Header() {
+    const [modal, setModal] = useState(false)
     return (
         <Container>
             <Logo />
-            <BtnContainer>
+            <BtnContainer onClick={() => setModal(true)}>
                 <img src={AddIcon} />
                 <span>버디 추가</span>
             </BtnContainer>
+            {modal && <BuddyAddModal setModal={setModal} />}
         </Container>
     )
 }
@@ -37,9 +40,12 @@ const Logo = styled.div`
     background-color: white;
 `
 
-const BtnContainer = styled.div`
+const BtnContainer = styled.button`
     display: flex;
     align-items: center;
+    background-color: ${COLORS.black};
+    border: none;
+    cursor: pointer;
 
     img {
         width: 20px;
@@ -55,5 +61,15 @@ const BtnContainer = styled.div`
         font-weight: 600;
         line-height: normal;
         margin-left: 10px;
+    }
+
+    &:hover {
+        span {
+            color: ${COLORS.gray};
+        }
+
+        img {
+            filter: brightness(0.6);
+        }
     }
 `
