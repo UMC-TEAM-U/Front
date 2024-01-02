@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
+import Home from './pages/Home'
 
 function App() {
     return (
@@ -9,6 +10,7 @@ function App() {
             <GlobalStyles />
             <Container>
                 <Header />
+                <Home />
                 <NavBar />
             </Container>
         </>
