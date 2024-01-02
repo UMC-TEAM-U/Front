@@ -1,7 +1,6 @@
 import { styled } from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import Button from '../common/Button'
-import Select from 'react-select'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { ReactComponent as Arrow } from '../../assets/icon/arrow-down.svg'

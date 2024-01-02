@@ -4,7 +4,6 @@ import Button from '../component/common/Button'
 import ImgCom from '../component/login/ImgCom'
 import InputCom from '../component/login/InputCom'
 import { COLORS } from '../styles/theme'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 function Login() {
@@ -13,7 +12,7 @@ function Login() {
     const [isFormValid, setIsFormValid] = useState(false)
     const navigate = useNavigate()
 
-    const handleSubmit = async event => {
+    const handleSubmit = () => {
         navigate('/home')
         // event.preventDefault()
         // const data = {
