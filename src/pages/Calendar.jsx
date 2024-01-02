@@ -56,20 +56,20 @@ const Container = styled.div`
 const dummy = [
     {
         id: 1,
-        name: '바나나먹는곰돌이',
-        date: '2021-08-01',
+        name: '바나나싫은곰돌이',
+        date: '2024-01-03',
         time: '10:00',
     },
     {
         id: 2,
-        name: '바나나먹는곰돌이',
-        date: '2021-08-01',
-        time: '10:00',
+        name: '클로버',
+        date: '2024-01-03',
+        time: '12:30',
     },
     {
         id: 3,
-        name: '바나나먹는곰돌이',
-        date: '2021-08-01',
-        time: '10:00',
+        name: '집갈래',
+        date: '2024-01-03',
+        time: '14:00',
     },
 ]
