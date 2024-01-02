@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import TitleBar from '../component/home/TitleBar'
 import UserBox from '../component/home/UserBox'
+import LevelFilter from '../component/home/LevelFilter'
 
 function Home() {
+    const [selected, setSelected] = useState('0')
     return (
         <Container>
-            <TitleBar />
-            <UserBox />
+            <TitleBar text={'시리우스 님,<br />안녕하세요!'} />
+            <LevelFilter selected={selected} setSelected={setSelected} />
+            <UserBox selected={selected} />
         </Container>
     )
 }

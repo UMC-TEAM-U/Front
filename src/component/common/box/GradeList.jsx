@@ -36,7 +36,7 @@ const Box = styled.div`
 `
 
 const Name = styled.div`
-    font-size: 16px;
+    font-size: 12px;
 `
 
 const Bold = styled.span`
@@ -44,7 +44,7 @@ const Bold = styled.span`
 `
 
 const Grade = styled.div`
-    font-size: 12px;
+    font-size: 14px;
     display: flex;
     justify-content: space-between;
 `

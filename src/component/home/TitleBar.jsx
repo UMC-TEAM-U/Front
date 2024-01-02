@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 
-function TitleBar() {
+function TitleBar(data) {
+    const title = data.text?.split('<br />')
     return (
         <Container>
             <Title>
-                시리우스 님, <br />
-                안녕하세요!
+                {title?.map((text, index) => {
+                    return <div key={index}>{text}</div>
+                })}
             </Title>
         </Container>
     )
@@ -18,6 +20,7 @@ export default TitleBar
 const Container = styled.div`
     width: 100%;
     height: 195px;
+    min-height: 195px;
     background-color: ${COLORS.darkgray};
     box-sizing: border-box;
 
