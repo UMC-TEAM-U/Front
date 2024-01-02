@@ -9,6 +9,7 @@ import GiftModal from '../common/modal/GiftModal'
 const UserBanner = () => {
     const [levelModal, setLevelModal] = useState(false)
     const [giftModal, setGiftModal] = useState(false)
+    // 유저 이름, 레벨 필요
     return (
         <Container>
             <IconBox />
@@ -26,7 +27,9 @@ const UserBanner = () => {
                     </Button>
                 </Actions>
                 {levelModal && <LevelModal setLevelModal={setLevelModal} />}
-                {giftModal && <GiftModal setGiftModal={setGiftModal} />}
+                {giftModal && (
+                    <GiftModal setGiftModal={setGiftModal} level={'3'} />
+                )}
             </Content>
         </Container>
     )

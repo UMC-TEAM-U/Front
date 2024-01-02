@@ -4,7 +4,6 @@ import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
 import GiftDetail from './pages/gift/GiftDetail'
 
-
 function App() {
     return (
         <>
