@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import loginGift from '../../assets/img/loginGift.png'
 
 function ImgCom() {
-    return <ImgContainer />
+    return <ImgContainer src={loginGift} alt="loginGift" />
 }
 
 export default ImgCom
