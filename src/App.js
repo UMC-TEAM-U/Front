@@ -5,14 +5,14 @@ import Header from './component/common/Header'
 import GiftDetail from './pages/gift/GiftDetail'
 import Home from './pages/Home'
 
+
 function App() {
     return (
         <>
             <GlobalStyles />
             <Container>
                 <Header />
-                {/* <Home /> */}
-                <GiftDetail />
+                <Home />
                 <NavBar />
             </Container>
         </>
