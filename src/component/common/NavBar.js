@@ -64,7 +64,7 @@ const IconBox = styled.div`
         margin-top: 5px;
         color: ${COLORS.white};
         text-align: center;
-        /* font-family: Pretendard Variable; */
+        font-family: Pretendard;
         font-size: 9px;
         font-style: normal;
         font-weight: 400;

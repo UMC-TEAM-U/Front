@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
+import Header from './component/common/Header'
 
 function App() {
     return (
         <>
             <GlobalStyles />
             <Container>
+                <Header />
                 <NavBar />
             </Container>
         </>
