@@ -6,7 +6,7 @@ import UserBox from '../component/home/UserBox'
 function Home() {
     return (
         <Container>
-            <TitleBar />
+            <TitleBar text="시리우스 님,<br />안녕하세요!" />
             <UserBox />
         </Container>
     )
