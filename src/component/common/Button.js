@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 
-function Button({ text, color, onClick }) {
+function Button({ text, color, onClick, className }) {
     return (
-        <ButtonStyle color={color} onClick={onClick}>
+        <ButtonStyle color={color} onClick={onClick} className={className}>
             <span>{text}</span>
         </ButtonStyle>
     )
@@ -15,6 +15,7 @@ Button.propTypes = {
     text: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     onClick: PropTypes.func, // 클릭 이벤트 핸들러를 받을 수 있도록 prop 추가
+    className: PropTypes.string,
 }
 
 export default Button
