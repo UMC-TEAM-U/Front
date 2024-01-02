@@ -7,21 +7,27 @@ import XIcon from '../../../assets/icon/x-icon.svg'
 import PropTypes from 'prop-types'
 import TextArea from './TextArea'
 
-const LevelModal = ({ setLevelModal }) => {
+const GiftAddModal = ({ type, options, onClick }) => {
     return (
         <Container>
             <Modal>
-                <XButton src={XIcon} onClick={() => setLevelModal(false)} />
-                <Title>등급 변경하기</Title>
-                <LevelBox>
-                    <span>등급</span>
+                <XButton src={XIcon} onClick={onClick} />
+                <Title>{type} 추가하기</Title>
+                <LevelBox type={type}>
+                    <span>가격대</span>
                     <DropDown options={options} />
                 </LevelBox>
                 <InputBox>
-                    <span>등급 변경 이유</span>
+                    <span>
+                        {type === '생일' ? '선물' : '경조사'} 이름을 적어주세요.
+                    </span>
                     <TextArea
-                        type="normal"
-                        placeholder={'변경한 이유를 적어주세요.\n(최대 60자)'}
+                        type={type}
+                        placeholder={
+                            type === '생일'
+                                ? '스타벅스 아메리카노 Tall'
+                                : '결혼식에 와주었어요.'
+                        }
                     />
                 </InputBox>
 
@@ -31,17 +37,13 @@ const LevelModal = ({ setLevelModal }) => {
     )
 }
 
-LevelModal.propTypes = {
-    setLevelModal: PropTypes.func,
+GiftAddModal.propTypes = {
+    type: PropTypes.string.isRequired,
+    options: PropTypes.object.isRequired,
+    onClick: PropTypes.func,
 }
 
-const options = [
-    { id: '1', name: 'Lv.1 눈결정' },
-    { id: '2', name: 'Lv.2 눈송이' },
-    { id: '3', name: 'Lv.3 눈사람' },
-]
-
-export default LevelModal
+export default GiftAddModal
 
 const Container = styled.div`
     width: 100%;
@@ -67,7 +69,7 @@ const XButton = styled.img`
 
 const Modal = styled.div`
     width: 358px;
-    height: 573px;
+    height: 626px;
     background-color: ${COLORS.lightgray};
     box-sizing: border-box;
     padding: 20px;
@@ -98,7 +100,7 @@ const Title = styled.h2`
 
 const LevelBox = styled.div`
     width: 100%;
-    height: 200px;
+    height: ${props => (props.type === '생일' ? '300px' : '250px')};
     margin-top: 20px;
 `
 

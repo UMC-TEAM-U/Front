@@ -27,6 +27,7 @@ const ButtonStyle = styled.button`
     border-radius: 12px;
     background-color: ${COLORS.darkgray};
     text-align: left;
+    cursor: pointer;
 
     span {
         color: ${COLORS.white};
