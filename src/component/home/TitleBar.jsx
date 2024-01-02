@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 
 function TitleBar(data) {
-    const title = data.text.split('<br />')
+    const title = data.text?.split('<br />')
     return (
         <Container>
             <Title>
-                {title.map((text, index) => {
+                {title?.map((text, index) => {
                     return <div key={index}>{text}</div>
                 })}
             </Title>

@@ -8,7 +8,7 @@ function Home() {
     const [selected, setSelected] = useState('0')
     return (
         <Container>
-            <TitleBar />
+            <TitleBar text={'시리우스 님,<br />안녕하세요!'} />
             <LevelFilter selected={selected} setSelected={setSelected} />
             <UserBox selected={selected} />
         </Container>
