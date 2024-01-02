@@ -1,40 +1,24 @@
-/* eslint-disable indent */
-
 import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import User from './User'
-import PropTypes from 'prop-types'
 
-const UserBox = ({ selected, onClick }) => {
+const UserBox = selected => {
     return (
         <Container>
             <Wrapper>
-                {selected === '0'
-                    ? dummy?.map((userData, index) => (
-                          <User
-                              key={index}
-                              userData={userData}
-                              onClick={onClick}
-                          />
+                {selected.selected === '0'
+                    ? dummy.map((userData, index) => (
+                          <User key={index} userData={userData} />
                       ))
                     : dummy
-                          .filter(item => item.level === selected)
+                          .filter(item => item.level === selected.selected)
                           .map((userData, index) => (
-                              <User
-                                  key={index}
-                                  userData={userData}
-                                  onClick={onClick}
-                              />
+                              <User key={index} userData={userData} />
                           ))}
             </Wrapper>
         </Container>
     )
-}
-
-UserBox.propTypes = {
-    selected: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
 }
 
 export default UserBox

@@ -5,27 +5,24 @@ import HomeIcon from '../../assets/icon/home-icon.svg'
 import CalendarIcon from '../../assets/icon/calendar-icon.svg'
 import GiftIcon from '../../assets/icon/gift-icon.svg'
 import SettingIcon from '../../assets/icon/setting-icon.svg'
-import { useNavigate } from 'react-router-dom'
 
 function NavBar() {
-    const navigate = useNavigate()
-
     return (
         <Container>
             <Nav>
-                <IconBox onClick={() => navigate('/')}>
+                <IconBox>
                     <img src={HomeIcon} />
                     <span>버디리스트</span>
                 </IconBox>
-                <IconBox onClick={() => navigate('/calendar')}>
+                <IconBox>
                     <img src={CalendarIcon} />
                     <span>캘린더</span>
                 </IconBox>
-                <IconBox onClick={() => navigate('/gift')}>
+                <IconBox>
                     <img src={GiftIcon} />
                     <span>선물관리</span>
                 </IconBox>
-                <IconBox onClick={() => navigate('/setting')}>
+                <IconBox>
                     <img src={SettingIcon} />
                     <span>설정</span>
                 </IconBox>

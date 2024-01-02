@@ -5,19 +5,19 @@ import TextContainer2 from '../component/setting/TextContainer2'
 import Logout from '../component/setting/Logout'
 import styled from 'styled-components'
 import { COLORS } from '../styles/theme'
-import { useNavigate } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function Setting() {
-    const navigate = useNavigate()
+    const history = useHistory()
 
     const handleProfileEdit = () => {
-        navigate('/profile-setting')
+        history.push('/profile-setting')
     }
 
     return (
         <Container>
             <TitleBar text="설정" />
-            <TextContainer1 onProfileEditClick={handleProfileEdit} />
+            <TextContainer1 onClick={handleProfileEdit} />
             <TextContainer2 />
             <Logout />
         </Container>

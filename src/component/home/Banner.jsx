@@ -2,32 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import GradeData from '../../constants/Grade'
-import PropTypes from 'prop-types'
 
-const Banner = ({ userData }) => {
-    const level = userData.level
-
-    if (!userData || userData.level === undefined) {
-        return null // or render some placeholder
-    }
-
+const Banner = userData => {
+    const level = userData.userData.level
     return (
         <Container>
             <Wrapper>
                 <Level>{`Lv.${level} ${
                     GradeData.find(item => item.id == level).name
                 }`}</Level>
-                <Name>{userData.name}</Name>
+                <Name>{userData.userData.name}</Name>
             </Wrapper>
         </Container>
     )
-}
-
-Banner.propTypes = {
-    userData: PropTypes.shape({
-        level: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-    }),
 }
 
 export default Banner
