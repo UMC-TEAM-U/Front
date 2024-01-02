@@ -44,11 +44,17 @@ const Container = styled.div`
     width: 100%;
     height: 100vh;
     padding-top: 40px;
+    padding-bottom: 100px;
     background-color: ${COLORS.black};
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    overflow: auto;
+    box-sizing: border-box;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `
 
 const Actions = styled.div`

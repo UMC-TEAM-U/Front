@@ -20,6 +20,7 @@ export default TitleBar
 const Container = styled.div`
     width: 100%;
     height: 195px;
+    min-height: 195px;
     background-color: ${COLORS.darkgray};
     box-sizing: border-box;
 

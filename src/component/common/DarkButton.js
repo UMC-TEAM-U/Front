@@ -22,6 +22,7 @@ export default DarkButton
 const ButtonStyle = styled.button`
     width: 358px;
     height: 50px;
+    min-height: 50px;
     border: none;
     border-radius: 12px;
     background-color: ${COLORS.darkgray};

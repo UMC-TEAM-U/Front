@@ -11,8 +11,8 @@ function App() {
             <GlobalStyles />
             <Container>
                 <Header />
-                <GiftDetail />
-
+                {/* <GiftDetail /> */}
+                <Gift />
                 <NavBar />
             </Container>
         </>
