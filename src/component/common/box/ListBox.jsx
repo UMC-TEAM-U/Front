@@ -11,7 +11,7 @@ const ListBox = type => {
         <Container>
             <Title>{type.type}</Title>
             <Conntent>
-                {type.type === '받은 선물' &&
+                {(type.type === '선물 목록' || type.type === '경조사 목록') &&
                     giftDummy.map((gift, index) => {
                         return <GiftList data={gift} key={index} />
                     })}

@@ -4,14 +4,43 @@ import DarkButton from '../../component/common/DarkButton'
 import TitleBar from '../../component/home/TitleBar'
 import UserBanner from '../../component/home/UserBanner'
 import { COLORS } from '../../styles/theme'
+import { useState } from 'react'
+import Button from '../../component/common/Button'
 const GiftDetail = () => {
+    const [birthday, setBirthday] = useState(true)
+    const [event, setEvent] = useState(false)
+
+    const handleBirthday = () => {
+        setBirthday(true)
+        setEvent(false)
+    }
+
+    const handleEvent = () => {
+        setBirthday(false)
+        setEvent(true)
+    }
     return (
         <Container>
             <TitleBar text="바나나먹는곰돌이 님" />
             <UserBanner />
             <DarkButton text="생일 선물 추가하기" />
             <DarkButton text="경조사 추가하기" />
-            <ListBox type="등급 일기" />
+
+            <Actions>
+                <Button
+                    text="생일선물"
+                    onClick={() => handleBirthday()}
+                    color={birthday ? COLORS.pink : 'gray'}
+                />
+                <Button
+                    text="경조사"
+                    onClick={() => handleEvent()}
+                    color={event ? COLORS.pink : 'gray'}
+                />
+            </Actions>
+
+            {birthday && <ListBox type="선물 목록" />}
+            {event && <ListBox type="경조사 목록" />}
         </Container>
     )
 }
@@ -27,4 +56,9 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+`
+const Actions = styled.div`
+    display: flex;
+    gap: 11px;
+    margin: 11px 0 9px 0;
 `
