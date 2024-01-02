@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import ListBox from '../../component/common/box/ListBox'
+import DarkButton from '../../component/common/DarkButton'
 import TitleBar from '../../component/home/TitleBar'
+import UserBanner from '../../component/home/UserBanner'
 import { COLORS } from '../../styles/theme'
 import { useState } from 'react'
 import Button from '../../component/common/Button'
-const Gift = () => {
+const GiftDetail = () => {
     const [birthday, setBirthday] = useState(true)
     const [event, setEvent] = useState(false)
 
@@ -17,10 +19,13 @@ const Gift = () => {
         setBirthday(false)
         setEvent(true)
     }
-
     return (
         <Container>
-            <TitleBar text="선물 관리" />
+            <TitleBar text="바나나먹는곰돌이 님" />
+            <UserBanner />
+            <DarkButton text="생일 선물 추가하기" />
+            <DarkButton text="경조사 추가하기" />
+
             <Actions>
                 <Button
                     text="생일선물"
@@ -33,22 +38,24 @@ const Gift = () => {
                     color={event ? COLORS.pink : 'gray'}
                 />
             </Actions>
-            <ListBox type="버디" />
+
+            {birthday && <ListBox type="선물 목록" />}
+            {event && <ListBox type="경조사 목록" />}
         </Container>
     )
 }
 
-export default Gift
+export default GiftDetail
 
 const Container = styled.div`
-    width: 100%;
-    height: 100vh;
     padding-top: 40px;
     padding-bottom: 100px;
     background-color: ${COLORS.black};
+    width: 100%;
+    height: 100vh;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
     overflow: auto;
     box-sizing: border-box;
@@ -56,8 +63,8 @@ const Container = styled.div`
         display: none;
     }
 `
-
 const Actions = styled.div`
     display: flex;
     gap: 11px;
+    margin: 11px 0 9px 0;
 `
