@@ -13,7 +13,7 @@ function NavBar() {
     return (
         <Container>
             <Nav>
-                <IconBox onClick={() => navigate('/')}>
+                <IconBox onClick={() => navigate('/home')}>
                     <img src={HomeIcon} />
                     <span>버디리스트</span>
                 </IconBox>

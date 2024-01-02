@@ -26,7 +26,7 @@ const CalendarPage = () => {
                 value={value}
                 onClickDay={() => setOpen(true)}
             />
-            <div onClick={() => setOpen(true)}>Open</div>
+
             <BottomSheet open={open} onDismiss={() => setOpen(false)}>
                 <CalendatList list={dummy} />
             </BottomSheet>

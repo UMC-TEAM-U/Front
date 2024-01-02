@@ -14,23 +14,24 @@ function Login() {
     const navigate = useNavigate()
 
     const handleSubmit = async event => {
-        event.preventDefault()
-        const data = {
-            email,
-            password,
-        }
+        navigate('/home')
+        // event.preventDefault()
+        // const data = {
+        //     email,
+        //     password,
+        // }
 
-        console.log(data)
+        // console.log(data)
 
-        // 서버로 데이터 전송
-        await axios('http://13.124.153.160:8080/api/users/login', data)
-            .then(res => {
-                console.log(res.data)
-                if (res.data.isSuccess) {
-                    navigate('/home')
-                }
-            })
-            .catch(err => console.log(err))
+        // // 서버로 데이터 전송
+        // await axios('http://13.124.153.160:8080/api/users/login', data)
+        //     .then(res => {
+        //         console.log(res.data)
+        //         if (res.data.isSuccess) {
+        //             navigate('/home')
+        //         }
+        //     })
+        //     .catch(err => console.log(err))
     }
 
     useEffect(() => {

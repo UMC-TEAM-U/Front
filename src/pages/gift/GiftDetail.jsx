@@ -39,12 +39,12 @@ const GiftDetail = () => {
             <DarkButton text="경조사 추가하기" onClick={handleEventClick} />
 
             <Actions>
-                <Button
+                <StyledButton
                     text="생일선물"
                     onClick={() => handleBirthday()}
                     color={birthday ? COLORS.pink : 'gray'}
                 />
-                <Button
+                <StyledButton
                     text="경조사"
                     onClick={() => handleEvent()}
                     color={event ? COLORS.pink : 'gray'}
@@ -108,4 +108,8 @@ const Actions = styled.div`
     display: flex;
     gap: 11px;
     margin: 11px 0 9px 0;
+`
+
+const StyledButton = styled(Button)`
+    padding: 10px 20px;
 `
