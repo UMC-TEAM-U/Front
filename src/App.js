@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import { GlobalStyles } from './styles/GlobalStyles'
 
 import Header from './component/common/Header'
+
 import NavBar from './component/common/NavBar'
 
 import Gift from './pages/gift/Gift'
@@ -19,6 +20,7 @@ import Home from './pages/Home'
 import ProfileSetting from './pages/ProfileSetting'
 import Setting from './pages/Setting'
 import Signup from './pages/Signup'
+
 
 function MainApp() {
     const location = useLocation()
@@ -47,8 +49,10 @@ function App() {
     return (
         <Router>
             <GlobalStyles />
+
             <MainApp />
         </Router>
+
     )
 }
 
