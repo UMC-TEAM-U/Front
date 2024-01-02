@@ -3,6 +3,7 @@ import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
 import GiftDetail from './pages/gift/GiftDetail'
+import CalendarPage from './pages/Calendar'
 
 
 function App() {
