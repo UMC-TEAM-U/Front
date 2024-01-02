@@ -3,6 +3,7 @@ import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
 import Gift from './pages/gift/Gift'
+import GiftDetail from './pages/gift/GiftDetail'
 
 function App() {
     return (
@@ -10,8 +11,8 @@ function App() {
             <GlobalStyles />
             <Container>
                 <Header />
+                {/* <GiftDetail /> */}
                 <Gift />
-
                 <NavBar />
             </Container>
         </>
