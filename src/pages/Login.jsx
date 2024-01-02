@@ -4,17 +4,18 @@ import Button from '../component/common/Button'
 import ImgCom from '../component/login/ImgCom'
 import InputCom from '../component/login/InputCom'
 import { COLORS } from '../styles/theme'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
-    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isFormValid, setIsFormValid] = useState(false)
+    const navigate = useNavigate()
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault()
         const data = {
-            name,
             email,
             password,
         }
@@ -22,6 +23,14 @@ function Login() {
         console.log(data)
 
         // 서버로 데이터 전송
+        await axios('http://13.124.153.160:8080/api/users/login', data)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.isSuccess) {
+                    navigate('/home')
+                }
+            })
+            .catch(err => console.log(err))
     }
 
     useEffect(() => {
@@ -38,14 +47,6 @@ function Login() {
 
             <InputContainer>
                 <InputCom
-                    text="이름"
-                    placeholder="최대 8글자"
-                    backgroundColor={COLORS.lightgray}
-                    color={COLORS.gray}
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                />
-                <InputCom
                     text="이메일"
                     placeholder="abcdef@gmail.com"
                     backgroundColor={COLORS.lightgray}
@@ -55,7 +56,7 @@ function Login() {
                 />
                 <InputCom
                     text="비밀번호"
-                    placeholder="최대 영문 6글자 이상"
+                    placeholder="비밀번호를 입력하세요."
                     backgroundColor={COLORS.lightgray}
                     color={COLORS.gray}
                     value={password}
