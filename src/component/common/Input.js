@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-function Input({ placeholder, backgroundColor, color }) {
+function Input({ placeholder, backgroundColor, color, onChange }) {
     const [value, setValue] = useState('')
 
     const handleChange = event => {
         setValue(event.target.value)
-        console.log(event.target.value)
+        onChange(event)
+        // console.log(event.target.value)
     }
 
     return (
@@ -25,6 +26,7 @@ Input.propTypes = {
     placeholder: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
 }
 
 export default Input
