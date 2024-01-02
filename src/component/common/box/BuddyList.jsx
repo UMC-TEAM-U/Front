@@ -3,17 +3,19 @@ import styled from 'styled-components'
 import GradeData from '../../../constants/Grade'
 import { ListContainer } from './ListBox'
 import { COLORS } from '../../../styles/theme'
+import { useNavigate } from 'react-router-dom'
 
 const BuddyList = data => {
     const buddy = data.data
     const grade = GradeData[buddy.grade - 1].name
+    const navigate = useNavigate()
     return (
         <ListContainer
             style={
                 buddy.type === 'event' ? { backgroundColor: COLORS.pink } : null
             }
         >
-            <Box>
+            <Box onClick={() => navigate('/gift-detail')}>
                 <Name>{buddy.nickname}</Name>
                 <Grade>
                     Lv.{buddy.grade} {grade}
