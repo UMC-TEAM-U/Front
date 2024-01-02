@@ -6,14 +6,17 @@ import Button from '../component/common/Button'
 import ImgCom from '../component/login/ImgCom'
 import InputCom from '../component/login/InputCom'
 import { COLORS } from '../styles/theme'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Signup() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isFormValid, setIsFormValid] = useState(false)
+    const navigate = useNavigate()
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault()
         const data = {
             name,
@@ -24,6 +27,14 @@ function Signup() {
         console.log(data)
 
         // 서버로 데이터 전송
+        await axios('http://13.124.153.160:8080/api/users/sign-up', data)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.isSuccess) {
+                    navigate('/home')
+                }
+            })
+            .catch(err => console.log(err))
     }
 
     useEffect(() => {
