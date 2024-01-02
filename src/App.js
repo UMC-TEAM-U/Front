@@ -3,6 +3,8 @@ import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
 import GiftDetail from './pages/gift/GiftDetail'
+import Home from './pages/Home'
+
 
 function App() {
     return (
@@ -10,7 +12,7 @@ function App() {
             <GlobalStyles />
             <Container>
                 <Header />
-                <GiftDetail />
+                <Home />
                 <NavBar />
             </Container>
         </>

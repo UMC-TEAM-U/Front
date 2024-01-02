@@ -1,13 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
-import SnowFlakeImg from '../../assets/img/snowflake.png'
 import Banner from './Banner'
+import Grade1 from '../../assets/img/Grade1.png'
+import Grade2 from '../../assets/img/Grade2.png'
+import Grade3 from '../../assets/img/Grade3.png'
 
 const User = userData => {
     return (
         <Container>
-            <IconImg src={SnowFlakeImg} />
+            {userData.userData?.level === '1' && <IconImg src={Grade1} />}
+            {userData.userData?.level === '2' && <IconImg src={Grade2} />}
+            {userData.userData?.level === '3' && <IconImg src={Grade3} />}
             <Banner userData={userData.userData} />
         </Container>
     )
