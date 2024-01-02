@@ -5,11 +5,11 @@ import GradeData from '../../constants/Grade'
 import PropTypes from 'prop-types'
 
 const Banner = ({ userData }) => {
-    const level = userData.level
-
     if (!userData || userData.level === undefined) {
         return null // or render some placeholder
     }
+
+    const level = userData.level
 
     return (
         <Container>
