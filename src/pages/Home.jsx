@@ -17,7 +17,7 @@ function Home() {
             <TitleBar text={'시리우스 님,<br />안녕하세요!'} />
             <LevelFilter selected={selected} setSelected={setSelected} />
             {/* <UserBox selected={selected} /> */}
-            <UserBox selected={selected} onUserClick={handleUserClick} />
+            <UserBox selected={selected} onClick={handleUserClick} />
         </Container>
     )
 }

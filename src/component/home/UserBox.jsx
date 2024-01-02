@@ -6,25 +6,25 @@ import { COLORS } from '../../styles/theme'
 import User from './User'
 import PropTypes from 'prop-types'
 
-const UserBox = props => {
+const UserBox = ({ selected, onClick }) => {
     return (
         <Container>
             <Wrapper>
-                {props.selected === '0'
-                    ? dummy.map((userData, index) => (
+                {selected === '0'
+                    ? dummy?.map((userData, index) => (
                           <User
                               key={index}
                               userData={userData}
-                              onClick={props.onUserClick}
+                              onClick={onClick}
                           />
                       ))
                     : dummy
-                          .filter(item => item.level === props.selected)
+                          .filter(item => item.level === selected)
                           .map((userData, index) => (
                               <User
                                   key={index}
                                   userData={userData}
-                                  onClick={props.onUserClick}
+                                  onClick={onClick}
                               />
                           ))}
             </Wrapper>
@@ -34,7 +34,7 @@ const UserBox = props => {
 
 UserBox.propTypes = {
     selected: PropTypes.string.isRequired,
-    onUserClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
 }
 
 export default UserBox

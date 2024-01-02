@@ -3,14 +3,20 @@ import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import SnowFlakeImg from '../../assets/img/snowflake.png'
 import Banner from './Banner'
+import PropTypes from 'prop-types'
 
-const User = userData => {
+const User = ({ userData, onClick }) => {
     return (
-        <Container>
+        <Container onClick={onClick}>
             <IconImg src={SnowFlakeImg} />
-            <Banner userData={userData.userData} />
+            <Banner userData={userData} />
         </Container>
     )
+}
+
+User.propTypes = {
+    userData: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
 }
 
 export default User
