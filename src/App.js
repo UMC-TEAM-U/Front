@@ -4,6 +4,7 @@ import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
 import Home from './pages/Home'
 
+
 function App() {
     return (
         <>
@@ -11,6 +12,7 @@ function App() {
             <Container>
                 <Header />
                 <Home />
+
                 <NavBar />
             </Container>
         </>
