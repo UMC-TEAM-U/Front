@@ -5,6 +5,7 @@ import Select from 'react-select'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { ReactComponent as Arrow } from '../../assets/icon/arrow-down.svg'
+import DropDown from '../common/modal/DropDown'
 
 const Picker = styled.div`
     align-items: center;
@@ -99,13 +100,7 @@ const AddCalendar = () => {
         <Container>
             <Date>1월 3일 수요일</Date>
             <Title>친구 선택</Title>
-            <Select
-                options={buddyDummy}
-                getOptionLabel={option => option.nickname}
-                getOptionValue={option => option.id}
-                isMulti
-                defaultInputValue="바나나먹는곰돌이"
-            />
+            <DropDown options={buddyDummy} />
 
             <Title>시간 선택 </Title>
             <Time onClick={() => setOpen(!open)}>
@@ -166,15 +161,15 @@ const Time = styled.div`
 
 const buddyDummy = [
     {
-        nickname: '바나나먹는곰돌이',
+        name: '바나나먹는곰돌이',
         id: 1,
     },
     {
-        nickname: '바나나먹지마',
+        name: '바나나먹지마',
         id: 2,
     },
     {
-        nickname: '더운사람',
+        name: '더운사람',
         id: 3,
     },
 ]

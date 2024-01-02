@@ -32,7 +32,9 @@ const UserBanner = () => {
                     </Button>
                 </Actions>
                 {levelModal && <LevelModal setLevelModal={setLevelModal} />}
-                {giftModal && <GiftModal setGiftModal={setGiftModal} />}
+                {giftModal && (
+                    <GiftModal setGiftModal={setGiftModal} level={level} />
+                )}
             </Content>
         </Container>
     )

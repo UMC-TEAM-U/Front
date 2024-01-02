@@ -11,7 +11,7 @@ const CalendatList = ({ list }) => {
     return (
         <Container>
             {list.map((item, index) => {
-                return <List key={index} />
+                return <List key={index} list={item} />
             })}
             <AddButton>
                 <div onClick={() => setAdd(true)}>+ 일정 추가</div>
@@ -34,11 +34,12 @@ const Container = styled.div`
     background-color: ${COLORS.darkgray};
 `
 
-export const List = () => {
+export const List = item => {
+    console.log(item)
     return (
         <ListBox>
-            <div>12:00</div>
-            <div>with 바나나먹는곰돌이</div>
+            <div>{item.list.time}</div>
+            <div>with {item.list.name}</div>
         </ListBox>
     )
 }

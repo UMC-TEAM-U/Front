@@ -22,12 +22,12 @@ const Gift = () => {
         <Container>
             <TitleBar text="선물 관리" />
             <Actions>
-                <Button
+                <StyledButton
                     text="생일선물"
                     onClick={() => handleBirthday()}
                     color={birthday ? COLORS.pink : 'gray'}
                 />
-                <Button
+                <StyledButton
                     text="경조사"
                     onClick={() => handleEvent()}
                     color={event ? COLORS.pink : 'gray'}
@@ -60,4 +60,8 @@ const Container = styled.div`
 const Actions = styled.div`
     display: flex;
     gap: 11px;
+`
+
+const StyledButton = styled(Button)`
+    padding: 10px 20px;
 `
