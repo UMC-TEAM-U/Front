@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 
-function TitleBar() {
+function TitleBar(data) {
+    const title = data.text.split('<br />')
     return (
         <Container>
             <Title>
-                시리우스 님, <br />
-                안녕하세요!
+                {title.map((text, index) => {
+                    return <div key={index}>{text}</div>
+                })}
             </Title>
         </Container>
     )

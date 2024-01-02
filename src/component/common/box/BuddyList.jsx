@@ -2,13 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import GradeData from '../../../constants/Grade'
 import { ListContainer } from './ListBox'
+import { COLORS } from '../../../styles/theme'
 
 const BuddyList = data => {
     const buddy = data.data
     const grade = GradeData[buddy.grade - 1].name
     return (
         <ListContainer
-            style={buddy.type === 'event' ? { backgroundColor: 'pink' } : null}
+            style={
+                buddy.type === 'event' ? { backgroundColor: COLORS.pink } : null
+            }
         >
             <Box>
                 <Name>{buddy.nickname}</Name>

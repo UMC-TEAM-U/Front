@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import NavBar from './component/common/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import Header from './component/common/Header'
-import Home from './pages/Home'
-
+import Gift from './pages/gift/Gift'
 
 function App() {
     return (
@@ -11,7 +10,7 @@ function App() {
             <GlobalStyles />
             <Container>
                 <Header />
-                <Home />
+                <Gift />
 
                 <NavBar />
             </Container>
@@ -26,4 +25,5 @@ const Container = styled.div`
     height: 100vh;
     margin: 0 auto;
     position: relative;
+    overflow: hidden;
 `
