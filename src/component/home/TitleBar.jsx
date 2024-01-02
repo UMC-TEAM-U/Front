@@ -3,10 +3,7 @@ import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 
 function TitleBar(data) {
-    console.log(data.text)
     const title = data.text.split('<br />')
-    console.log(title)
-
     return (
         <Container>
             <Title>

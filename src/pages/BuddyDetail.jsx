@@ -1,12 +1,14 @@
 import { styled } from 'styled-components'
 import ListBox from '../component/common/box/ListBox'
 import TitleBar from '../component/home/TitleBar'
+import UserBanner from '../component/home/UserBanner'
 import { COLORS } from '../styles/theme'
 
 const BuddyDetail = () => {
     return (
         <Container>
             <TitleBar text="바나나먹는곰돌이 님" />
+            <UserBanner />
             <ListBox type="등급 일기" />
         </Container>
     )
