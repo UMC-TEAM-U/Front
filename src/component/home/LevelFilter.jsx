@@ -76,6 +76,7 @@ const Label = styled.label`
     color: ${props => (props.selected ? COLORS.pink : COLORS.white)};
     background-color: ${COLORS.black};
     border: none;
+    cursor: pointer;
 
     font-family: Pretendard Variable;
     font-size: 10px;
