@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
+import GradeData from '../../constants/Grade'
 
 const Banner = userData => {
+    const level = userData.userData.level
     return (
         <Container>
             <Wrapper>
-                <Level>{userData.userData.level}</Level>
+                <Level>{`Lv.${level} ${
+                    GradeData.find(item => item.id == level).name
+                }`}</Level>
                 <Name>{userData.userData.name}</Name>
             </Wrapper>
         </Container>
