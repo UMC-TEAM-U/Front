@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import Button from '../common/Button'
+import PropTypes from 'prop-types'
 
-function TextContainer1() {
+function TextContainer1({ onProfileEditClick }) {
     return (
         <TextContainer>
             <TextStyle
@@ -14,9 +15,17 @@ function TextContainer1() {
             >
                 시리우스 님
             </TextStyle>
-            <StyleButton color="gray" text="프로필 수정" />
+            <StyleButton
+                color="gray"
+                text="프로필 수정"
+                onClick={onProfileEditClick}
+            />
         </TextContainer>
     )
+}
+
+TextContainer1.propTypes = {
+    onProfileEditClick: PropTypes.func.isRequired,
 }
 
 export default TextContainer1
