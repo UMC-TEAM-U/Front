@@ -5,13 +5,19 @@ import GiftIcon from '../../assets/icon/gift.svg'
 import { useState } from 'react'
 import LevelModal from '../common/modal/LevelModal'
 import GiftModal from '../common/modal/GiftModal'
+import Grade1 from '../../assets/img/Grade1.png'
+import Grade2 from '../../assets/img/Grade2.png'
+import Grade3 from '../../assets/img/Grade3.png'
 
 const UserBanner = () => {
     const [levelModal, setLevelModal] = useState(false)
     const [giftModal, setGiftModal] = useState(false)
+    const level = '1'
     return (
         <Container>
-            <IconBox />
+            {level === '1' && <IconBox src={Grade1} />}
+            {level === '2' && <IconBox src={Grade2} />}
+            {level === '3' && <IconBox src={Grade3} />}
             <Content>
                 <Title>
                     바나나먹는곰돌이 님의 등급은{' '}
@@ -26,7 +32,9 @@ const UserBanner = () => {
                     </Button>
                 </Actions>
                 {levelModal && <LevelModal setLevelModal={setLevelModal} />}
-                {giftModal && <GiftModal setGiftModal={setGiftModal} />}
+                {giftModal && (
+                    <GiftModal setGiftModal={setGiftModal} level={level} />
+                )}
             </Content>
         </Container>
     )
@@ -44,10 +52,9 @@ const Container = styled.div`
     gap: 14px;
 `
 
-const IconBox = styled.div`
+const IconBox = styled.img`
     width: 48px;
     height: 48px;
-    background-color: ${COLORS.pink};
 `
 
 const Content = styled.div`

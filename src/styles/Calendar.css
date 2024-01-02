@@ -1,0 +1,141 @@
+.react-calendar {
+    width: 390px;
+    max-width: 100%;
+    background: #131825;
+    color: #94a2b8;
+    line-height: 30px;
+}
+
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.react-calendar button {
+    margin: 0;
+    border: 0;
+}
+
+.react-calendar button:enabled:hover {
+    cursor: pointer;
+}
+
+.react-calendar__navigation {
+    display: flex;
+    height: 74px;
+    margin-bottom: 1em;
+}
+
+/* 상단 네비게이션 */
+.react-calendar__navigation button {
+    min-width: 44px;
+    background: none;
+    color: #f8fafc;
+    font-size: 20px;
+    padding: 0 16px;
+}
+
+.react-calendar__navigation button:disabled {
+    background-color: #f0f0f0;
+}
+
+.react-calendar__month-view__weekdays {
+    text-align: center;
+    font-size: 13px;
+    color: #94a2b8;
+}
+
+.react-calendar__month-view__weekdays abbr {
+    text-decoration: none;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    padding: 0.5em;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+}
+
+/* 주말 */
+.react-calendar__month-view__days__day--weekend {
+    color: #f8fafc;
+}
+
+/* 이전달, 다음달 */
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #334155;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+    padding: 2em 0.5em;
+}
+
+.react-calendar__tile {
+    max-width: 100%;
+    padding: 10px 6.6667px;
+    background: none;
+    text-align: center;
+    line-height: 16px;
+    font-size: 0.833em;
+    color: #f8fafc;
+}
+
+.react-calendar__tile:enabled:focus {
+    border: 1px solid #ff5cd1;
+    padding: auto;
+    border-radius: 12px;
+}
+
+.react-calendar__tile--now {
+    color: #ff5cd1;
+}
+
+.react-calendar__tile--now:enabled:focus {
+    background: none;
+    color: #ff5cd1;
+}
+
+.react-calendar__tile--hasActive {
+    background: none;
+}
+
+.react-calendar__tile--active {
+    color: #f8fafc;
+}
+
+.react-calendar__tile--active:enabled:focus {
+    background: none;
+}
+
+.react-calendar__month-view__days__day,
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #f8fafc;
+    font-size: 15px;
+    font-weight: 100;
+    height: 50px;
+}
+
+.react-calendar__tile--now {
+    color: #ff5cd1;
+}
+
+.react-calendar__tile--active {
+    background: none;
+    color: #ff5cd1;
+}
+
+/* 년도와 월의 색상 수정 */
+.react-calendar__tile--navigation,
+.react-calendar__navigation__label__labelText {
+    color: #ff5cd1;
+}
