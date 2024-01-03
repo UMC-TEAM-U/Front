@@ -1,24 +1,59 @@
 /* eslint-disable indent */
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import User from './User'
 import PropTypes from 'prop-types'
+import axios from 'axios'
 
 const UserBox = ({ selected, onClick }) => {
+    const [friends, setFriends] = useState([])
+
+    const getFriends = async () => {
+        let token = localStorage.getItem('accessToken')
+        await axios
+            .get('http://13.124.153.160:8080/api/friends?sort=0', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then(res => {
+                const friendData = res.data.result
+                friendData.map(f => {
+                    switch (f.level) {
+                        case 'SNOW_CRYSTAL':
+                            f.level = '1'
+                            break
+                        case 'SNOWMAN':
+                            f.level = '3'
+                            break
+                        default:
+                            f.level = '2'
+                            break
+                    }
+                })
+                setFriends(friendData)
+            })
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getFriends()
+    }, [])
+
     return (
         <Container>
             <Wrapper>
                 {selected === '0'
-                    ? dummy?.map((userData, index) => (
+                    ? friends?.map((userData, index) => (
                           <User
                               key={index}
                               userData={userData}
                               onClick={onClick}
                           />
                       ))
-                    : dummy
+                    : friends
                           .filter(item => item.level === selected)
                           .map((userData, index) => (
                               <User

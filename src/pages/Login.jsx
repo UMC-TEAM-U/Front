@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Button from '../component/common/Button'
 import ImgCom from '../component/login/ImgCom'
@@ -24,6 +24,15 @@ function Login() {
             .then(res => {
                 console.log(res.data)
                 if (res.data.isSuccess) {
+                    localStorage.setItem('userName', res.data.result.nickName)
+                    localStorage.setItem(
+                        'accessToken',
+                        res.data.result.tokenInfo.accessToken,
+                    )
+                    localStorage.setItem(
+                        'refreshToken',
+                        res.data.result.tokenInfo.refrechToken,
+                    )
                     navigate('/home')
                 }
             })
