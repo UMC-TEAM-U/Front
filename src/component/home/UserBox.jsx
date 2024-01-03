@@ -7,7 +7,7 @@ import User from './User'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
-const UserBox = ({ selected, onClick }) => {
+const UserBox = ({ selected }) => {
     const [friends, setFriends] = useState([])
 
     const getFriends = async () => {
@@ -47,20 +47,12 @@ const UserBox = ({ selected, onClick }) => {
             <Wrapper>
                 {selected === '0'
                     ? friends?.map((userData, index) => (
-                          <User
-                              key={index}
-                              userData={userData}
-                              onClick={onClick}
-                          />
+                          <User key={index} userData={userData} />
                       ))
                     : friends
                           .filter(item => item.level === selected)
                           .map((userData, index) => (
-                              <User
-                                  key={index}
-                                  userData={userData}
-                                  onClick={onClick}
-                              />
+                              <User key={index} userData={userData} />
                           ))}
             </Wrapper>
         </Container>
@@ -96,62 +88,3 @@ const Wrapper = styled.div`
         display: none;
     }
 `
-
-const dummy = [
-    {
-        level: '1',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '2',
-        name: '곰돌이',
-    },
-    {
-        level: '1',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '3',
-        name: '곰돌이',
-    },
-    {
-        level: '1',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '2',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '1',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '3',
-        name: '곰돌이',
-    },
-    {
-        level: '2',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '1',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '3',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '2',
-        name: '곰돌이',
-    },
-    {
-        level: '3',
-        name: '바나나먹는곰돌이',
-    },
-    {
-        level: '2',
-        name: '바나나먹는곰돌이',
-    },
-]

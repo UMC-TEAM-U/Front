@@ -8,20 +8,23 @@ import GiftModal from '../common/modal/GiftModal'
 import Grade1 from '../../assets/img/Grade1.png'
 import Grade2 from '../../assets/img/Grade2.png'
 import Grade3 from '../../assets/img/Grade3.png'
+import PropTypes from 'prop-types'
 
-const UserBanner = () => {
+const UserBanner = ({ userData }) => {
     const [levelModal, setLevelModal] = useState(false)
     const [giftModal, setGiftModal] = useState(false)
-    const level = '1'
+
     return (
         <Container>
-            {level === '1' && <IconBox src={Grade1} />}
-            {level === '2' && <IconBox src={Grade2} />}
-            {level === '3' && <IconBox src={Grade3} />}
+            {userData.level === '1' && <IconBox src={Grade1} />}
+            {userData.level === '2' && <IconBox src={Grade2} />}
+            {userData.level === '3' && <IconBox src={Grade3} />}
             <Content>
                 <Title>
-                    바나나먹는곰돌이 님의 등급은{' '}
-                    <span style={{ fontWeight: '700' }}>눈송이</span>
+                    {userData.name} 님의 등급은{' '}
+                    <span style={{ fontWeight: '700' }}>
+                        {userData.levelName}
+                    </span>
                 </Title>
                 <Actions>
                     <Button onClick={() => setLevelModal(true)}>
@@ -33,11 +36,18 @@ const UserBanner = () => {
                 </Actions>
                 {levelModal && <LevelModal setLevelModal={setLevelModal} />}
                 {giftModal && (
-                    <GiftModal setGiftModal={setGiftModal} level={level} />
+                    <GiftModal
+                        setGiftModal={setGiftModal}
+                        level={userData.level}
+                    />
                 )}
             </Content>
         </Container>
     )
+}
+
+UserBanner.propTypes = {
+    userData: PropTypes.object.isRequired,
 }
 
 export default UserBanner

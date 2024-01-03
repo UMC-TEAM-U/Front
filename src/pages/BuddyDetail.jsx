@@ -3,12 +3,30 @@ import ListBox from '../component/common/box/ListBox'
 import TitleBar from '../component/home/TitleBar'
 import UserBanner from '../component/home/UserBanner'
 import { COLORS } from '../styles/theme'
+import { useLocation } from 'react-router-dom'
 
 const BuddyDetail = () => {
+    const location = useLocation()
+    const data = location.state.data
+
+    // level별 등급 이름 부여
+    switch (data.level) {
+        case '1':
+            data.levelName = '눈결정'
+            break
+        case '2':
+            data.levelName = '눈송이'
+            break
+        case '3':
+            data.levelName = '눈사람'
+            break
+        default:
+            break
+    }
     return (
         <Container>
-            <TitleBar text="바나나먹는곰돌이 님" />
-            <UserBanner />
+            <TitleBar text={data.name} />
+            <UserBanner userData={data} />
             <ListBox type="등급 일기" />
         </Container>
     )
