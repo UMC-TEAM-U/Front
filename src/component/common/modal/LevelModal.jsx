@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../../styles/theme'
 import DropDown from './DropDown'
@@ -6,8 +6,55 @@ import ModalButton from './ModalButton'
 import XIcon from '../../../assets/icon/x-icon.svg'
 import PropTypes from 'prop-types'
 import TextArea from './TextArea'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const LevelModal = ({ setLevelModal }) => {
+const LevelModal = ({ userData, setLevelModal }) => {
+    const [value, setValue] = useState('')
+    const [currentValue, setCurrentValue] = useState(`${options[0].name}`)
+    const navigate = useNavigate()
+
+    const valueToLevel = v => {
+        switch (v) {
+            case 'Lv.1 눈결정':
+                return 1
+            case 'Lv.2 눈송이':
+                return 2
+            case 'Lv.3 눈사람':
+                return 3
+            default:
+                return 1
+        }
+    }
+
+    const changeLevel = async () => {
+        const data = {
+            friend_id: userData.friend_id,
+            level: valueToLevel(currentValue),
+            reason: value,
+        }
+        const token = localStorage.getItem('accessToken')
+        await axios
+            .put('http://13.124.153.160:8080/api/friends', data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then(res => {
+                if (res.data.isSuccess) {
+                    userData.level = `${valueToLevel(currentValue)}`
+                    setLevelModal(false)
+                    navigate('/buddy-detail', {
+                        state: {
+                            data: userData,
+                        },
+                    })
+                    window.location.replace('/buddy-detail')
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <Container>
             <Modal>
@@ -15,23 +62,30 @@ const LevelModal = ({ setLevelModal }) => {
                 <Title>등급 변경하기</Title>
                 <LevelBox>
                     <span>등급</span>
-                    <DropDown options={options} />
+                    <DropDown
+                        currentValue={currentValue}
+                        setCurrentValue={setCurrentValue}
+                        options={options}
+                    />
                 </LevelBox>
                 <InputBox>
                     <span>등급 변경 이유</span>
                     <TextArea
+                        value={value}
+                        setValue={setValue}
                         type="normal"
                         placeholder={'변경한 이유를 적어주세요.\n(최대 60자)'}
                     />
                 </InputBox>
 
-                <ModalButton text="추가하기" />
+                <ModalButton text="추가하기" onClick={changeLevel} />
             </Modal>
         </Container>
     )
 }
 
 LevelModal.propTypes = {
+    userData: PropTypes.object.isRequired,
     setLevelModal: PropTypes.func,
 }
 

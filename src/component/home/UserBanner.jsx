@@ -34,7 +34,12 @@ const UserBanner = ({ userData }) => {
                         추천 선물 <img src={GiftIcon} />
                     </Button>
                 </Actions>
-                {levelModal && <LevelModal setLevelModal={setLevelModal} />}
+                {levelModal && (
+                    <LevelModal
+                        userData={userData}
+                        setLevelModal={setLevelModal}
+                    />
+                )}
                 {giftModal && (
                     <GiftModal
                         setGiftModal={setGiftModal}

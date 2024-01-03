@@ -1,20 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../../styles/theme'
 import PropTypes from 'prop-types'
 
-const TextArea = ({ type, placeholder }) => {
-    const [textValue, setTextValue] = useState('')
-
-    const handleSetValue = e => {
-        setTextValue(e.target.value)
-    }
+const TextArea = ({ value, setValue, type, placeholder }) => {
     return (
         <Container
             type={type}
             placeholder={placeholder}
-            value={textValue}
-            onChange={e => handleSetValue(e)}
+            value={value}
+            onChange={e => setValue(e.target.value)}
             maxLength={60}
         ></Container>
     )
@@ -23,6 +18,8 @@ const TextArea = ({ type, placeholder }) => {
 export default TextArea
 
 TextArea.propTypes = {
+    value: PropTypes.string.isRequired,
+    setValue: PropTypes.func,
     type: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
 }
