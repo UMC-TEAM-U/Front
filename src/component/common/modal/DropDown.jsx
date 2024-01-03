@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../../styles/theme'
+import PropTypes from 'prop-types'
 
-const DropDown = options => {
-    const [currentValue, setCurrentValue] = useState(
-        `${options.options[0].name}`,
-    )
+const DropDown = ({ currentValue, setCurrentValue, options }) => {
     const [showOptions, setShowOptions] = useState(false)
 
     const handleOnChangeSelectValue = e => {
@@ -17,7 +15,7 @@ const DropDown = options => {
         <SelectBox onClick={() => setShowOptions(prev => !prev)}>
             <Label>{currentValue}</Label>
             <SelectOptions show={showOptions}>
-                {options.options.map((option, index) => (
+                {options.map((option, index) => (
                     <Option key={index} onClick={handleOnChangeSelectValue}>
                         {option.name}
                     </Option>
@@ -25,6 +23,12 @@ const DropDown = options => {
             </SelectOptions>
         </SelectBox>
     )
+}
+
+DropDown.propTypes = {
+    currentValue: PropTypes.string.isRequired,
+    options: PropTypes.array.isRequired,
+    setCurrentValue: PropTypes.func,
 }
 
 export default DropDown

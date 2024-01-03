@@ -1,22 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../../styles/theme'
+import PropTypes from 'prop-types'
 
-const ModalInput = placeholder => {
-    const [value, setValue] = useState('')
-
+const ModalInput = ({ value, setValue, placeholder }) => {
     const handleChange = event => {
         setValue(event.target.value)
-        console.log(event.target.value)
     }
 
     return (
         <InputStyle
             value={value}
             onChange={handleChange}
-            placeholder={placeholder.placeholder}
+            placeholder={placeholder}
         />
     )
+}
+
+ModalInput.propTypes = {
+    value: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    setValue: PropTypes.func,
 }
 
 export default ModalInput
