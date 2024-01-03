@@ -5,41 +5,30 @@ import ImgCom from '../component/login/ImgCom'
 import InputCom from '../component/login/InputCom'
 import { COLORS } from '../styles/theme'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isFormValid, setIsFormValid] = useState(false)
     const navigate = useNavigate()
 
-    const handleSubmit = () => {
-        navigate('/home')
-        // event.preventDefault()
-        // const data = {
-        //     email,
-        //     password,
-        // }
-
-        // console.log(data)
+    const handleSubmit = async () => {
+        const data = {
+            email,
+            password,
+        }
 
         // // 서버로 데이터 전송
-        // await axios('http://13.124.153.160:8080/api/users/login', data)
-        //     .then(res => {
-        //         console.log(res.data)
-        //         if (res.data.isSuccess) {
-        //             navigate('/home')
-        //         }
-        //     })
-        //     .catch(err => console.log(err))
+        await axios
+            .post('http://13.124.153.160:8080/api/users/login', data)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.isSuccess) {
+                    navigate('/home')
+                }
+            })
+            .catch(err => console.log(err))
     }
-
-    useEffect(() => {
-        if (name && email && password) {
-            setIsFormValid(true)
-        } else {
-            setIsFormValid(false)
-        }
-    }, [name, email, password])
 
     return (
         <Container>
@@ -48,6 +37,7 @@ function Login() {
             <InputContainer>
                 <InputCom
                     text="이메일"
+                    type="text"
                     placeholder="abcdef@gmail.com"
                     backgroundColor={COLORS.lightgray}
                     color={COLORS.gray}
@@ -56,6 +46,7 @@ function Login() {
                 />
                 <InputCom
                     text="비밀번호"
+                    type="password"
                     placeholder="비밀번호를 입력하세요."
                     backgroundColor={COLORS.lightgray}
                     color={COLORS.gray}
@@ -64,11 +55,7 @@ function Login() {
                 />
             </InputContainer>
 
-            <StyledButton
-                text="지금 바로 시작"
-                onClick={handleSubmit}
-                disabled={!isFormValid}
-            />
+            <StyledButton text="지금 바로 시작" onClick={handleSubmit} />
         </Container>
     )
 }

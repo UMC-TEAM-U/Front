@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-function Input({ placeholder, backgroundColor, color, onChange }) {
+function Input({ type, placeholder, backgroundColor, color, onChange }) {
     const [value, setValue] = useState('')
 
     const handleChange = event => {
@@ -13,6 +13,7 @@ function Input({ placeholder, backgroundColor, color, onChange }) {
 
     return (
         <InputStyle
+            type={type}
             value={value}
             onChange={handleChange}
             placeholder={placeholder}
@@ -27,6 +28,7 @@ Input.propTypes = {
     backgroundColor: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     onChange: PropTypes.func,
+    type: PropTypes.string.isRequired,
 }
 
 export default Input

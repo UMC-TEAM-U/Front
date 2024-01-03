@@ -3,13 +3,15 @@ import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import AddIcon from '../../assets/icon/add-icon.svg'
 import BuddyAddModal from './modal/BuddyAddModal'
-import { ReactComponent as Logo } from '../../assets/icon/Logo.svg'
+import LogoIcon from '../../assets/icon/Logo.svg'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
     const [modal, setModal] = useState(false)
+    const navigate = useNavigate()
     return (
         <Container>
-            <Logo />
+            <Logo src={LogoIcon} onClick={() => navigate('/home')} />
             <BtnContainer onClick={() => setModal(true)}>
                 <img src={AddIcon} />
                 <span>버디 추가</span>
@@ -35,11 +37,11 @@ const Container = styled.div`
     padding: 0px 20px;
 `
 
-// const Logo = styled.div`
-//     width: 24px;
-//     height: 24px;
-//     background-color: white;
-// `
+const Logo = styled.img`
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+`
 
 const BtnContainer = styled.button`
     display: flex;

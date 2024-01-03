@@ -10,7 +10,6 @@ import Grade2 from '../../assets/img/Grade2.png'
 import Grade3 from '../../assets/img/Grade3.png'
 
 const User = ({ userData, onClick }) => {
-    console.log(userData)
     return (
         <Container onClick={onClick}>
             {userData?.level === '1' && <IconImg src={Grade1} />}
@@ -35,6 +34,7 @@ const Container = styled.div`
     border-radius: 10px;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 `
 
 const IconImg = styled.img`

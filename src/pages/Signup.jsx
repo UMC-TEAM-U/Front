@@ -61,6 +61,7 @@ function Signup() {
                 />
                 <InputCom
                     text="이메일"
+                    type="email"
                     placeholder="abcdef@gmail.com"
                     backgroundColor={COLORS.lightgray}
                     color={COLORS.gray}
@@ -69,6 +70,7 @@ function Signup() {
                 />
                 <InputCom
                     text="비밀번호"
+                    type="password"
                     placeholder="최대 영문 6글자 이상"
                     backgroundColor={COLORS.lightgray}
                     color={COLORS.gray}
