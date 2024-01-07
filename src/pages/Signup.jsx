@@ -19,7 +19,7 @@ function Signup() {
     const handleSubmit = async event => {
         event.preventDefault()
         const data = {
-            name,
+            nickname: name,
             email,
             password,
         }
@@ -27,7 +27,8 @@ function Signup() {
         console.log(data)
 
         // 서버로 데이터 전송
-        await axios('http://13.124.153.160:8080/api/users/sign-up', data)
+        await axios
+            .post('http://13.124.153.160:8080/api/users/sign-up', data)
             .then(res => {
                 console.log(res.data)
                 if (res.data.isSuccess) {
@@ -60,6 +61,7 @@ function Signup() {
                 />
                 <InputCom
                     text="이메일"
+                    type="email"
                     placeholder="abcdef@gmail.com"
                     backgroundColor={COLORS.lightgray}
                     color={COLORS.gray}
@@ -68,6 +70,7 @@ function Signup() {
                 />
                 <InputCom
                     text="비밀번호"
+                    type="password"
                     placeholder="최대 영문 6글자 이상"
                     backgroundColor={COLORS.lightgray}
                     color={COLORS.gray}

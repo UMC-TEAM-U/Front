@@ -57,6 +57,7 @@ const IconBox = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     img {
         width: 24px;
@@ -72,5 +73,9 @@ const IconBox = styled.div`
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+    }
+
+    &:hover {
+        filter: brightness(0.6);
     }
 `

@@ -3,21 +3,15 @@ import styled from 'styled-components'
 import TitleBar from '../component/home/TitleBar'
 import UserBox from '../component/home/UserBox'
 import LevelFilter from '../component/home/LevelFilter'
-import { useNavigate } from 'react-router-dom'
 
 function Home() {
     const [selected, setSelected] = useState('0')
-    const navigate = useNavigate()
-    const handleUserClick = () => {
-        navigate('/buddy-detail')
-    }
 
     return (
         <Container>
             <TitleBar text={'시리우스 님,<br />안녕하세요!'} />
             <LevelFilter selected={selected} setSelected={setSelected} />
-            {/* <UserBox selected={selected} /> */}
-            <UserBox selected={selected} onClick={handleUserClick} />
+            <UserBox selected={selected} />
         </Container>
     )
 }

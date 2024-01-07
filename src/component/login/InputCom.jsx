@@ -9,12 +9,13 @@ function InputCom({
     color,
     value,
     onChange,
+    type,
 }) {
     return (
         <div>
             <span style={{ color: '#FFF' }}> {text}</span>
             <Input
-                // type="text"
+                type={type ? type : 'text'}
                 placeholder={placeholder}
                 backgroundColor={backgroundColor}
                 color={color}
@@ -32,6 +33,7 @@ InputCom.propTypes = {
     color: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func,
+    type: PropTypes.string.isRequired,
 }
 
 export default InputCom

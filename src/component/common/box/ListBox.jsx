@@ -1,23 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import GiftList from './GiftList'
 import { COLORS } from '../../../styles/theme'
 import GradeList from './GradeList'
 import BuddyList from './BuddyList'
+import PropTypes from 'prop-types'
+import axios from 'axios'
 
-const ListBox = type => {
-    // const title = type.type
+const ListBox = ({ type, userData }) => {
+    const [history, setHistory] = useState([])
+
+    const getHistory = async () => {
+        let token = localStorage.getItem('accessToken')
+        console.log('userData=>', userData)
+        await axios
+            .get(
+                `http://13.124.153.160:8080/api/friends/${userData.friend_id}/changes`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                },
+            )
+            .then(res => {
+                setHistory(res.data.result)
+            })
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getHistory()
+    }, [])
+
     return (
         <Container>
-            <Title>{type.type}</Title>
+            <Title>{type}</Title>
             <Conntent>
                 {(type.type === '선물 목록' || type.type === '경조사 목록') &&
                     giftDummy.map((gift, index) => {
                         return <GiftList data={gift} key={index} />
                     })}
-                {type.type === '등급 일기' &&
-                    gradeDummy.map((grade, index) => {
-                        return <GradeList data={grade} key={index} />
+                {type === '등급 일기' &&
+                    history.map((history, index) => {
+                        return <GradeList history={history} key={index} />
                     })}
                 {type.type === '버디' &&
                     buddyDummy.map((buddy, index) => {
@@ -26,6 +51,11 @@ const ListBox = type => {
             </Conntent>
         </Container>
     )
+}
+
+ListBox.propTypes = {
+    type: PropTypes.string.isRequired,
+    userData: PropTypes.object.isRequired,
 }
 
 export default ListBox
@@ -47,10 +77,11 @@ const Container = styled.div`
 `
 const Title = styled.div`
     font-size: 30px;
+    font-family: Pretendard Variables;
     color: ${COLORS.white};
     font-weight: 700;
     padding-left: 13px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 `
 
 const Conntent = styled.div`
