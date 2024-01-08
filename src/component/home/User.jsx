@@ -2,28 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import Banner from './Banner'
-import axios from 'axios'
 import PropTypes from 'prop-types'
-
 import Grade1 from '../../assets/img/Grade1.png'
 import Grade2 from '../../assets/img/Grade2.png'
 import Grade3 from '../../assets/img/Grade3.png'
 import { useNavigate } from 'react-router-dom'
+import { authInstance } from '../../api/axios'
 
 const User = ({ userData }) => {
     const navigate = useNavigate()
     const handleUserClick = async () => {
-        let token = localStorage.getItem('accessToken')
-        await axios
-            .get(
-                `http://13.124.153.160:8080/api/friends/${userData.friend_id}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                },
-            )
+        await authInstance
+            .get(`/api/friends/${userData.friend_id}`)
             .then(res => {
+                // level 데이터 가공 -> 서버 쪽 응답 수정 필요
                 const friendData = res.data.result
                 switch (friendData.level) {
                     case 'SNOW_CRYSTAL':
@@ -36,7 +28,7 @@ const User = ({ userData }) => {
                         friendData.level = '2'
                         break
                 }
-                // navigate to datail page
+                // navigate
                 navigate('/buddy-detail', {
                     state: {
                         data: friendData,

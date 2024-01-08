@@ -39,7 +39,7 @@ function MainApp() {
                 <Route path="/buddy-detail" element={<BuddyDetail />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/calendar" element={<CalendarPage />} />
-                <Route path="*" element={<Navigate to="/login" />} />
+                <Route path="*" element={<Navigate to="/signup" />} />
             </Routes>
             {!hideForPage.includes(location.pathname) && <NavBar />}
         </Container>

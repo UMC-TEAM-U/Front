@@ -5,20 +5,16 @@ import styled from 'styled-components'
 import { COLORS } from '../../styles/theme'
 import User from './User'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+import { authInstance } from '../../api/axios'
 
 const UserBox = ({ selected }) => {
     const [friends, setFriends] = useState([])
 
     const getFriends = async () => {
-        let token = localStorage.getItem('accessToken')
-        await axios
-            .get('http://13.124.153.160:8080/api/friends?sort=0', {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        await authInstance
+            .get('/api/friends?sort=0')
             .then(res => {
+                // level 데이터 가공 -> 서버 쪽 응답 수정 필요
                 const friendData = res.data.result
                 friendData.map(f => {
                     switch (f.level) {

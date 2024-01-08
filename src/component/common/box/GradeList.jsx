@@ -48,13 +48,6 @@ const Box = styled.div`
     padding: 2px;
 `
 
-const Title = styled.div`
-    color: ${COLORS.black};
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 7px;
-`
-
 const Name = styled.div`
     font-size: 12px;
 `

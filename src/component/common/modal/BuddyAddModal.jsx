@@ -6,7 +6,7 @@ import ModalInput from './ModalInput'
 import ModalButton from './ModalButton'
 import XIcon from '../../../assets/icon/x-icon.svg'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+import { authInstance } from '../../../api/axios'
 
 const BuddyAddModal = ({ setModal }) => {
     const [value, setValue] = useState('')
@@ -31,15 +31,10 @@ const BuddyAddModal = ({ setModal }) => {
             level: valueToLevel(currentValue),
             memo: '',
         }
-        const token = localStorage.getItem('accessToken')
-        await axios
-            .post('http://13.124.153.160:8080/api/friends', data, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+
+        await authInstance
+            .post('/api/friends', data)
             .then(res => {
-                console.log(res.data)
                 if (res.data.isSuccess) {
                     setModal(false)
                     window.location.replace('/home')

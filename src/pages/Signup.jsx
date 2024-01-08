@@ -6,8 +6,8 @@ import Button from '../component/common/Button'
 import ImgCom from '../component/login/ImgCom'
 import InputCom from '../component/login/InputCom'
 import { COLORS } from '../styles/theme'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { defaultInstance } from '../api/axios'
 
 function Signup() {
     const [name, setName] = useState('')
@@ -27,10 +27,9 @@ function Signup() {
         console.log(data)
 
         // 서버로 데이터 전송
-        await axios
-            .post('http://13.124.153.160:8080/api/users/sign-up', data)
+        await defaultInstance
+            .post('/api/users/sign-up', data)
             .then(res => {
-                console.log(res.data)
                 if (res.data.isSuccess) {
                     navigate('/home')
                 }
@@ -85,7 +84,10 @@ function Signup() {
                 disabled={!isFormValid}
             />
 
-            <TextButton text="이미 계정이 있으신가요?"></TextButton>
+            <TextButton
+                text="이미 계정이 있으신가요?"
+                onClick={() => navigate('/login')}
+            ></TextButton>
         </Container>
     )
 }
@@ -117,6 +119,7 @@ const TextButton = styled(Button)`
     margin-top: 25px;
     margin-bottom: 78px;
     background-color: transparent;
+    cursor: pointer;
     span {
         font-size: 14px;
         font-style: normal;
