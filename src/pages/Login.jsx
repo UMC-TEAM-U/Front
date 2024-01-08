@@ -5,7 +5,7 @@ import ImgCom from '../component/login/ImgCom'
 import InputCom from '../component/login/InputCom'
 import { COLORS } from '../styles/theme'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { defaultInstance } from '../api/axios'
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -18,20 +18,17 @@ function Login() {
             password,
         }
 
-        // // 서버로 데이터 전송
-        await axios
-            .post('http://13.124.153.160:8080/api/users/login', data)
+        // 서버로 데이터 전송
+        await defaultInstance
+            .post('/api/users/login', data)
             .then(res => {
                 console.log(res.data)
                 if (res.data.isSuccess) {
+                    // 유저 이름, access token 저장
                     localStorage.setItem('userName', res.data.result.nickName)
                     localStorage.setItem(
                         'accessToken',
                         res.data.result.tokenInfo.accessToken,
-                    )
-                    localStorage.setItem(
-                        'refreshToken',
-                        res.data.result.tokenInfo.refrechToken,
                     )
                     navigate('/home')
                 }

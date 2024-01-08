@@ -5,23 +5,14 @@ import { COLORS } from '../../../styles/theme'
 import GradeList from './GradeList'
 import BuddyList from './BuddyList'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+import { authInstance } from '../../../api/axios'
 
 const ListBox = ({ type, userData }) => {
     const [history, setHistory] = useState([])
 
     const getHistory = async () => {
-        let token = localStorage.getItem('accessToken')
-        console.log('userData=>', userData)
-        await axios
-            .get(
-                `http://13.124.153.160:8080/api/friends/${userData.friend_id}/changes`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                },
-            )
+        await authInstance
+            .get(`/api/friends/${userData.friend_id}/changes`)
             .then(res => {
                 setHistory(res.data.result)
             })
@@ -29,14 +20,15 @@ const ListBox = ({ type, userData }) => {
     }
 
     useEffect(() => {
-        getHistory()
+        // 등급 일기일 경우에만 히스토리 가져오기
+        if (type === '등급 일기') getHistory()
     }, [])
 
     return (
         <Container>
             <Title>{type}</Title>
             <Conntent>
-                {(type.type === '선물 목록' || type.type === '경조사 목록') &&
+                {(type === '선물 목록' || type === '경조사 목록') &&
                     giftDummy.map((gift, index) => {
                         return <GiftList data={gift} key={index} />
                     })}
@@ -44,7 +36,7 @@ const ListBox = ({ type, userData }) => {
                     history.map((history, index) => {
                         return <GradeList history={history} key={index} />
                     })}
-                {type.type === '버디' &&
+                {type === '버디' &&
                     buddyDummy.map((buddy, index) => {
                         return <BuddyList data={buddy} key={index} />
                     })}
@@ -112,34 +104,6 @@ const giftDummy = [
     {
         title: '투썸 스초생 세트',
         price: '10000원 대',
-    },
-]
-
-const gradeDummy = [
-    {
-        nickname: '바나나먹는 곰돌이',
-        grade: 1,
-        before: 2,
-        date: '2021.07.01',
-    },
-    {
-        nickname: '바나나먹지마',
-        grade: 1,
-        before: 2,
-        date: '2021.07.01',
-    },
-
-    {
-        nickname: '더운사람',
-        grade: 3,
-        before: 2,
-        date: '2021.07.01',
-    },
-    {
-        nickname: '졸린사람',
-        grade: 2,
-        before: 3,
-        date: '2021.07.01',
     },
 ]
 

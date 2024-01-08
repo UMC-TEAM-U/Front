@@ -6,8 +6,8 @@ import ModalButton from './ModalButton'
 import XIcon from '../../../assets/icon/x-icon.svg'
 import PropTypes from 'prop-types'
 import TextArea from './TextArea'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { authInstance } from '../../../api/axios'
 
 const LevelModal = ({ userData, setLevelModal }) => {
     const [value, setValue] = useState('')
@@ -33,16 +33,11 @@ const LevelModal = ({ userData, setLevelModal }) => {
             level: valueToLevel(currentValue),
             reason: value,
         }
-        const token = localStorage.getItem('accessToken')
-        await axios
-            .put('http://13.124.153.160:8080/api/friends', data, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        await authInstance
+            .put('/api/friends', data)
             .then(res => {
                 if (res.data.isSuccess) {
-                    userData.level = `${valueToLevel(currentValue)}`
+                    userData.level = `${valueToLevel(currentValue)}` // 수정 필요
                     setLevelModal(false)
                     navigate('/buddy-detail', {
                         state: {
